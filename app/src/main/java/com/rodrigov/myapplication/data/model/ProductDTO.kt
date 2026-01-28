@@ -10,10 +10,11 @@ data class ProductDTO(
     @SerialName("codigo_barra")
     val codigoBarra: String,
 
-    val nombre: String,
+    val descripcion: String,
 
     @SerialName("precio_unidad")
     val precioUnidad: Double,
 
-    val cantidad: Int
+    @SerialName("fecha_actualizacion")
+    val fechaActualizacion: String
 )

@@ -87,12 +87,9 @@ fun AppNavGraph(modifier: Modifier = Modifier) {
                 onSearch = { codigo ->
                     navController.navigate(Routes.Result.createRoute(codigo))
                 },
-                onScan = {
-                    navController.navigate(Routes.ScanBarcode.route)
-                },
-//                onBack = {
-//                    navController.popBackStack()
-//                }
+                onBack = {
+                    navController.popBackStack()
+                }
             )
         }
 

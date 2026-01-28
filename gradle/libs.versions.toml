@@ -17,6 +17,7 @@ ktorKtorSerializationKotlinxJson = "3.3.3"
 lifecycleRuntimeKtx = "2.10.0"
 activityCompose = "1.12.2"
 composeBom = "2025.12.01"
+materialIconsExtended = "1.7.8"
 navigationCompose = "2.9.6"
 mlkitBarcode = "17.3.0"
 cameraLifecycle = "1.5.2"
@@ -24,6 +25,7 @@ cameraView = "1.5.2"
 
 [libraries]
 androidx-camera-core = { module = "androidx.camera:camera-core", version.ref = "cameraCore" }
+androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }

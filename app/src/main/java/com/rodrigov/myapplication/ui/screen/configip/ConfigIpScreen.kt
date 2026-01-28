@@ -2,12 +2,14 @@ package com.rodrigov.myapplication.ui.screen.configip
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -23,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.rodrigov.myapplication.ui.screen.components.BackButton
 import com.rodrigov.myapplication.utils.AppDataStore
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -41,46 +44,49 @@ fun ConfigIpScreen(
         serverAddress = AppDataStore.getServerIp(context).first()
     }
 
-    Column(
-        modifier = Modifier.fillMaxSize().padding(24.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    Box(
+        modifier = Modifier.fillMaxSize().padding(24.dp)
     ) {
-        Text(
-            text = "Configuración",
-            style = MaterialTheme.typography.headlineMedium
-        )
-
-        Spacer(modifier = Modifier.height(32.dp))
-
-        OutlinedTextField(
-            value = serverAddress,
-            onValueChange = { serverAddress = it },
-            label = { Text("Ip del servidor") },
-            singleLine = true
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Button(
-            modifier = Modifier.fillMaxWidth(),
-            onClick = {
-                scope.launch {
-                    AppDataStore.saveServerIp(context, serverAddress)
-                    onContinue()
-                }
-                Toast.makeText(context, "Conexión establecida", Toast.LENGTH_SHORT).show()
-            },
-            enabled = serverAddress.isNotBlank()
+        Column(
+            modifier = Modifier.align(Alignment.Center),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Guardar")
+            Text(
+                text = "Configuración",
+                style = MaterialTheme.typography.headlineMedium
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            OutlinedTextField(
+                value = serverAddress,
+                onValueChange = { serverAddress = it },
+                label = { Text("Ip del servidor") },
+                singleLine = true
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Button(
+                modifier = Modifier.fillMaxWidth(0.8f),
+                shape = RoundedCornerShape(8.dp),
+                onClick = {
+                    scope.launch {
+                        AppDataStore.saveServerIp(context, serverAddress)
+                        onContinue()
+                    }
+                    Toast.makeText(context, "Conexión establecida", Toast.LENGTH_SHORT).show()
+                },
+                enabled = serverAddress.isNotBlank()
+            ) {
+                Text("Guardar")
+            }
         }
 
-        Button(
-            modifier = Modifier.fillMaxWidth(),
+        BackButton(
+            modifier = Modifier.align(Alignment.TopStart),
             onClick = onBack
-        ) {
-            Text("Volver")
-        }
+        )
     }
 }
