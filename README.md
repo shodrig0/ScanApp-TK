@@ -1,9 +1,14 @@
-# ScanApp
+## Descripción
 
-Aplicación pensada para el ámbito comercial de un supermercado con un aparato POS.
+**ScanApp** es una aplicación Android orientada a entornos de supermercado/POS para consultar y actualizar información de productos a partir de códigos de barras.
 
-El prototipo está pensado para mostrar un funcionamiento rápido desde un android. La idea luego es implementar plugins de scaneo infrarrojo e impresión térmica, correspondientes al os del POS.
+La app permite:
+- Configurar y guardar la IP del servidor local.
+- Buscar productos por código de barras (EAN-12/EAN-13).
+- Consultar detalles del producto desde una API REST (`GET /producto/{codigo}`).
+- Actualizar el precio unitario del producto (`PATCH /producto/{codigo}`).
 
+Está desarrollada en **Kotlin** con **Jetpack Compose** y **Navigation Compose**, usa **Ktor** para red, **DataStore** para persistencia local de configuración, e incluye integración con **CameraX + ML Kit** para escaneo por cámara.
 ## Vista Previa
 
 ### Ícono
